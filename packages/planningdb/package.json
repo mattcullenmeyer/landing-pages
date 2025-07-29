@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "upload": "s3 sync out/ s3://planningdb.com --profile personal",
+    "invalidate": "aws cloudfront create-invalidation --distribution-id E2VO661B5CLAVJ --paths '/*' --profile personal",
+    "deploy": "pnpm build && pnpm upload && pnpm invalidate",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start"

@@ -25,7 +25,7 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center text-center max-w-5xl mx-auto space-y-10">
               <div className="space-y-6">
-                <h1 className="text-3xl lg:text-5xl sm:text-4xl font-bold">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
                   Lightweight data consolidation and version control for planning in spreadsheets
                 </h1>
                 <p className="mx-auto max-w-3xl md:text-xl dark:text-gray-400 text-black">
@@ -60,7 +60,7 @@ export default function LandingPage() {
                       EXISTING TOOLS
                     </Badge>
                   </p>
-                  <h2 className="font-bold tracking-tight text-3xl">FP&A software is overbuilt and underused</h2>
+                  <h2 className="font-bold tracking-tight text-2xl sm:text-3xl">FP&A software is overbuilt and underused</h2>
                   <div className="space-y-3 text-muted-foreground">
                     <p className="text-black text-lg">
                       Enterprise tools solve consolidation, versioning, and permissions really well. But teams are{" "}
@@ -105,7 +105,7 @@ export default function LandingPage() {
                       OUR APPROACH
                     </Badge>
                   </p>
-                  <h2 className="font-bold tracking-tight text-3xl">Lightweight, flexible, and reliable</h2>
+                  <h2 className="font-bold tracking-tight text-2xl sm:text-3xl">Lightweight, flexible, and reliable</h2>
                   <div className="space-y-3 text-muted-foreground">
                     <p className="text-black text-lg">
                       Spreadsheets are flexible but fragile. EPM tools are structured but bloated.
@@ -152,7 +152,7 @@ export default function LandingPage() {
                       SPREADSHEET-NATIVE
                     </Badge>
                   </p>
-                  <h2 className="text-3xl font-bold tracking-tight sm:text-2xl">Bi-direction sync to spreadsheets</h2>
+                  <h2 className="font-bold tracking-tight text-2xl sm:text-3xl">Bi-direction sync to spreadsheets</h2>
                   <div className="space-y-3">
                     <p className="text-black text-lg">
                       PlanningDB directly <span className="font-bold">connects to Excel and Google Sheets</span> so you can
@@ -198,7 +198,7 @@ export default function LandingPage() {
                       WAREHOUSE-NATIVE
                     </Badge>
                   </p>
-                  <h2 className="text-3xl font-bold tracking-tight sm:text-2xl">
+                  <h2 className="font-bold tracking-tight text-2xl sm:text-3xl">
                     Save plans directly to your data warehouse
                   </h2>
                   <div className="space-y-3">
