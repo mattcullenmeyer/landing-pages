@@ -63,8 +63,8 @@ const CallToAction = () => {
         type="email"
         name="email"
         required
-        placeholder="Enter your business email"
-        className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity50"
+        placeholder="Business email*"
+        className="flex h-12 w-full rounded-md border border-primary bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity50"
       />
       <Button className="w-full sm:w-auto" size="lg" type="submit">
         Join Waitlist
@@ -78,7 +78,7 @@ export default function LandingPage() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="flex justify-center w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gray-100">
+        <section className="flex justify-center w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-sand">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center text-center max-w-5xl mx-auto space-y-10">
               <div className="space-y-6">
@@ -114,7 +114,7 @@ export default function LandingPage() {
               <div className="px-4 md:px-6">
                 <div className="space-y-4">
                   <div className="text-sm tracking-widest uppercase text-black font-normal">
-                    <Badge className="bg-[#fff382] px-2 py-1 rounded-[14px] tracking-widest uppercase font-semibold bg-black text-white">
+                    <Badge className="bg-brand px-2 py-1 rounded-[14px] tracking-widest uppercase font-bold text-black">
                       EXISTING TOOLS
                     </Badge>
                   </div>
@@ -139,7 +139,7 @@ export default function LandingPage() {
 
               {/* Quote Card */}
               <div className="px-4 md:px-6">
-                <Card className="p-6 bg-[#fff382] bg-white border-gray-400">
+                <Card className="p-6 bg-sand border-none">
                   <CardContent className="p-0">
                     <div className="space-y-4">
                       <Quote className="h-8 w-8 text-primary" />
@@ -164,7 +164,7 @@ export default function LandingPage() {
               <div className="order-1 lg:order-2 px-4 md:px-6 lg:col-start-2">
                 <div className="space-y-4">
                   <div className="text-sm tracking-widest uppercase text-black font-normal">
-                    <Badge className="bg-[#fff382] px-2 py-1 rounded-[14px] tracking-widest uppercase bg-black text-white font-semibold">
+                    <Badge className="bg-brand px-2 py-1 rounded-[14px] tracking-widest uppercase font-bold text-black">
                       OUR APPROACH
                     </Badge>
                   </div>
@@ -190,7 +190,7 @@ export default function LandingPage() {
 
               {/* Quote Card */}
               <div className="order-2 lg:order-1 px-4 md:px-6">
-                <Card className="p-6 bg-white border-gray-400">
+                <Card className="p-6 bg-sand border-none">
                   <CardContent className="p-0">
                     <div className="space-y-4">
                       <Quote className="h-8 w-8 text-primary" />
@@ -216,7 +216,7 @@ export default function LandingPage() {
               <div className="px-4 md:px-6">
                 <div className="space-y-4">
                   <div className="text-sm tracking-widest uppercase text-black font-normal">
-                    <Badge className="bg-[#fff382] px-2 py-1 rounded-[14px] tracking-widest uppercase bg-black text-white font-semibold">
+                    <Badge className="bg-brand px-2 py-1 rounded-[14px] tracking-widest uppercase font-bold text-black">
                       SPREADSHEET-NATIVE
                     </Badge>
                   </div>
@@ -241,7 +241,7 @@ export default function LandingPage() {
 
               {/* Quote Card - Right Half */}
               <div className="px-4 md:px-6">
-                <Card className="p-6 bg-[#fff382] bg-white border-slate-400">
+                <Card className="p-6 bg-sand border-none">
                   <CardContent className="p-0">
                     <div className="space-y-4">
                       <Quote className="h-8 w-8 text-primary" />
@@ -269,7 +269,7 @@ export default function LandingPage() {
               <div className="order-1 lg:order-2 px-4 md:px-6 lg:col-start-2">
                 <div className="space-y-4">
                   <div className="text-sm tracking-widest uppercase text-black font-normal">
-                    <Badge className="bg-[#fff382] px-2 py-1 rounded-[14px] tracking-widest uppercase bg-black text-white font-semibold">
+                    <Badge className="bg-brand px-2 py-1 rounded-[14px] tracking-widest uppercase font-bold text-black">
                       WAREHOUSE-NATIVE
                     </Badge>
                   </div>
@@ -298,7 +298,7 @@ export default function LandingPage() {
 
               {/* Quote Card */}
               <div className="order-2 lg:order-1 px-4 md:px-6">
-                <Card className="p-6 bg-white border-slate-400">
+                <Card className="p-6 bg-sand border-none">
                   <CardContent className="p-0">
                     <div className="space-y-4">
                       <Quote className="h-8 w-8 text-primary" />
@@ -318,8 +318,8 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* New Features Section */}
-        <section className="flex justify-center w-full py-12 md:py-20 bg-gray-100">
+        {/* Features Section */}
+        <section className="flex justify-center w-full py-12 md:py-20">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
               <div className="space-y-2">
@@ -334,7 +334,7 @@ export default function LandingPage() {
             </div>
             <div className="mx-auto grid max-w-5xl items-stretch gap-6 lg:grid-cols-3 lg:gap-12">
               {/* Data Consolidation Card */}
-              <Card className="p-6 bg-white border-slate-400">
+              <Card className="p-6 bg-sand border-none">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-center font-semibold">
                     Consolidation
@@ -360,7 +360,7 @@ export default function LandingPage() {
               </Card>
 
               {/* Version Control Card */}
-              <Card className="p-6 bg-white border-slate-400">
+              <Card className="p-6 bg-sand border-none">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-center font-semibold">
                     Version Control
@@ -386,7 +386,7 @@ export default function LandingPage() {
               </Card>
 
               {/* Access Control Card */}
-              <Card className="p-6 bg-white border-slate-400">
+              <Card className="p-6 bg-sand border-none">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-center font-semibold">
                     Permissions

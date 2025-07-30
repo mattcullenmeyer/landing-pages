@@ -13,6 +13,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        sand: 'rgb(249, 247, 240)',
+        brand: 'rgb(255, 243, 130)',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
