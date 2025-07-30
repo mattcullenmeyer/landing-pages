@@ -2,7 +2,7 @@
 
 ## Create Route 53 hosted zone
 
-You need to first create a hosted zone manually  
+You need to first create a hosted zone manually
 
 ### AWS Console
 
@@ -26,7 +26,7 @@ You need to first create a hosted zone manually
 
 `aws configure list-profiles` # list profiles  
 `aws configure list --profile {profile_name}` # print configuration info of name profile  
-`aws configure --profile {profile_name}` # configure a new profile  
+`aws configure --profile {profile_name}` # configure a new profile
 
 `cd terraform/deploy`  
 `terraform init`  
