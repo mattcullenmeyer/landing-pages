@@ -82,7 +82,7 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center text-center max-w-5xl mx-auto space-y-10">
               <div className="space-y-6">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
                   Lightweight data consolidation and version control for
                   planning in spreadsheets
                 </h1>
@@ -100,7 +100,7 @@ export default function LandingPage() {
         {/* New Heading Section */}
         <section className="flex justify-center w-full py-12 md:pt-20 bg-white">
           <div className="container px-4 md:px-6 text-center">
-            <h2 className="text-3xl tracking-tight sm:text-4xl font-bold md:text-4xl">
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
               {'Most companies that have an FP&A tool still use spreadsheets'}
             </h2>
           </div>
@@ -118,7 +118,7 @@ export default function LandingPage() {
                       EXISTING TOOLS
                     </Badge>
                   </div>
-                  <h2 className="font-bold tracking-tight text-2xl sm:text-3xl">
+                  <h2 className="font-semibold tracking-tight text-2xl sm:text-3xl">
                     FP&A software is overbuilt and underused
                   </h2>
                   <div className="space-y-3 text-muted-foreground">
@@ -168,7 +168,7 @@ export default function LandingPage() {
                       OUR APPROACH
                     </Badge>
                   </div>
-                  <h2 className="font-bold tracking-tight text-2xl sm:text-3xl">
+                  <h2 className="font-semibold tracking-tight text-2xl sm:text-3xl">
                     Lightweight, flexible, and reliable
                   </h2>
                   <div className="space-y-3 text-muted-foreground">
@@ -220,7 +220,7 @@ export default function LandingPage() {
                       SPREADSHEET-NATIVE
                     </Badge>
                   </div>
-                  <h2 className="font-bold tracking-tight text-2xl sm:text-3xl">
+                  <h2 className="font-semibold tracking-tight text-2xl sm:text-3xl">
                     Bi-direction sync to spreadsheets
                   </h2>
                   <div className="space-y-3">
@@ -273,7 +273,7 @@ export default function LandingPage() {
                       WAREHOUSE-NATIVE
                     </Badge>
                   </div>
-                  <h2 className="font-bold tracking-tight text-2xl sm:text-3xl">
+                  <h2 className="font-semibold tracking-tight text-2xl sm:text-3xl">
                     Save plans directly to your data warehouse
                   </h2>
                   <div className="space-y-3">
@@ -318,12 +318,77 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* How It Works Section */}
+        <section className="flex justify-center w-full py-12 md:py-20 bg-sand">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
+              <div className="space-y-2">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tighter">
+                  How PlanningDB works
+                </h2>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-3 lg:gap-12">
+              {/* Step 1 */}
+              <div className="flex flex-col items-center space-y-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary text-primary text-xl font-bold">
+                  1
+                </div>
+                <div className="flex flex-col space-y-4">
+                  <h3 className="text-xl font-semibold text-center">
+                    Connect your spreadsheets
+                  </h3>
+                  <p className="leading-relaxed">
+                    Pull structured data into your spreadsheets and write
+                    changes back automatically, without new formulas or
+                    migrations.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="flex flex-col items-center space-y-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary text-primary text-xl font-bold">
+                  2
+                </div>
+                <div className="flex flex-col space-y-4">
+                  <h3 className="text-xl font-semibold text-center">
+                    Define dimensions and versions
+                  </h3>
+                  <p className="leading-relaxed">
+                    Use dedicated sheets to define versions, dimensions, and
+                    hierarchies. Reference and compare them anywhere across your
+                    spreadsheets.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="flex flex-col items-center space-y-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary text-primary text-xl font-bold">
+                  3
+                </div>
+                <div className="flex flex-col space-y-4">
+                  <h3 className="text-xl font-semibold text-center">
+                    Consolidate and control access
+                  </h3>
+                  <p className="leading-relaxed">
+                    Let every team plan in their own file, then consolidate data
+                    automatically through PlanningDB. Control who can see or
+                    edit what.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Features Section */}
         <section className="flex justify-center w-full py-12 md:py-20">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tighter">
                   PlanningDB adds what spreadsheets lack
                 </h2>
                 <p className="max-w-[900px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 text-gray-800">
@@ -347,7 +412,7 @@ export default function LandingPage() {
                       and reliable data source.
                     </p>
                   </div>
-                  <div className="space-y-4 pt-4 border-t mt-4 border-slate-300">
+                  <div className="space-y-4 pt-4 border-t mt-4 border-gray-400">
                     <blockquote className="font-medium leading-relaxed text-sm">
                       {`"Every department does their own thing so spreadsheets
                       proliferate and @#$%!& becomes just a repository."`}
@@ -363,7 +428,7 @@ export default function LandingPage() {
               <Card className="p-6 bg-sand border-none">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-center font-semibold">
-                    Version Control
+                    Versioning
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-0 space-y-4">
@@ -373,7 +438,7 @@ export default function LandingPage() {
                       track every change in a full audit log.
                     </p>
                   </div>
-                  <div className="space-y-4 pt-4 border-t mt-4 border-gray-300">
+                  <div className="space-y-4 pt-4 border-t mt-4 border-gray-400">
                     <blockquote className="font-medium leading-relaxed text-sm">
                       {`"Planning tools like @#$%!& are basically for version
                       control."`}
@@ -399,7 +464,7 @@ export default function LandingPage() {
                       with simple access controls.
                     </p>
                   </div>
-                  <div className="space-y-4 pt-4 border-t mt-4 border-gray-300">
+                  <div className="space-y-4 pt-4 border-t mt-4 border-gray-400">
                     <blockquote className="font-medium leading-relaxed text-sm">
                       {`"Getting access controls exactly right is tricky in
                       @#$%!&."`}
@@ -413,19 +478,21 @@ export default function LandingPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="flex justify-center w-full py-12 md:py-20">
+        <section className="flex justify-center w-full pb-12 md:pb-20">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center text-center space-y-10">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Designed for the realities of modern planning{' '}
-                </h2>
-                <p className="mx-auto max-w-[600px] md:text-xl dark:text-gray-400 text-gray-800">
-                  PlanningDB fits into the tools your team already uses without
-                  the overhead of managing a complex system.
-                </p>
+            <div className="bg-brand rounded-2xl px-6 py-12 md:px-12 md:py-16">
+              <div className="flex flex-col items-center justify-center text-center space-y-10">
+                <div className="space-y-2">
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                    Designed for the realities of modern planning
+                  </h2>
+                  <p className="mx-auto max-w-[600px] md:text-xl dark:text-gray-400 text-black">
+                    PlanningDB fits into the tools your team already uses
+                    without the overhead of managing a complex system.
+                  </p>
+                </div>
+                <CallToAction />
               </div>
-              <CallToAction />
             </div>
           </div>
         </section>

@@ -16,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="theme-color" content="#F9F7F0" />
         <style>{`
 html {
   font-family: ${GeistSans.style.fontFamily};
