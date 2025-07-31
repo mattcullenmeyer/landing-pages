@@ -12,6 +12,21 @@ const AIRTABLE_TOKEN = process.env.NEXT_PUBLIC_AIRTABLE_TOKEN!;
 
 const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`;
 
+const gtag_report_conversion = (url?: string) => {
+  const callback = () => {
+    if (typeof url !== 'undefined') {
+      window.location.href = url;
+    }
+  };
+  if (typeof window !== 'undefined' && 'gtag' in window) {
+    (window as any).gtag('event', 'conversion', {
+      send_to: 'AW-17421563344/6QZ0CLOe9vwaENDrn_NA',
+      event_callback: callback,
+    });
+  }
+  return false;
+};
+
 const CallToAction = () => {
   const { toast } = useToast();
   const submitForm = async (e: React.FormEvent) => {
@@ -44,6 +59,7 @@ const CallToAction = () => {
       }
 
       form.reset();
+      gtag_report_conversion();
       toast({
         title: 'Success!',
         description: 'You have successfully joined the waitlist',
@@ -82,7 +98,7 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center text-center max-w-5xl mx-auto space-y-10">
               <div className="space-y-6">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+                <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
                   Lightweight data consolidation and version control for
                   planning in spreadsheets
                 </h1>
@@ -122,7 +138,7 @@ export default function LandingPage() {
                     FP&A software is overbuilt and underused
                   </h2>
                   <div className="space-y-3 text-muted-foreground">
-                    <p className="text-black text-lg">
+                    <p className="text-black text-md sm:text-lg">
                       Enterprise tools solve consolidation, versioning, and
                       permissions really well. But teams are{' '}
                       <span className="font-bold">
@@ -130,7 +146,7 @@ export default function LandingPage() {
                       </span>{' '}
                       for planning, reporting, and analysis.
                     </p>
-                    <p className="text-black text-lg">
+                    <p className="text-black text-md sm:text-lg">
                       {`FP&A systems have become expensive places to store spreadsheets.`}
                     </p>
                   </div>
@@ -172,11 +188,11 @@ export default function LandingPage() {
                     Lightweight, flexible, and reliable
                   </h2>
                   <div className="space-y-3 text-muted-foreground">
-                    <p className="text-black text-lg">
+                    <p className="text-black text-md sm:text-lg">
                       Spreadsheets are flexible but fragile. EPM tools are
                       structured but bloated.
                     </p>
-                    <p className="text-black text-lg">
+                    <p className="text-black text-md sm:text-lg">
                       PlanningDB gives you the best of both:{' '}
                       <span className="font-bold">
                         version control, centralized planning, and role-based
@@ -224,14 +240,14 @@ export default function LandingPage() {
                     Bi-direction sync to spreadsheets
                   </h2>
                   <div className="space-y-3">
-                    <p className="text-black text-lg">
+                    <p className="text-black text-md sm:text-lg">
                       PlanningDB directly{' '}
                       <span className="font-bold">
                         connects to Excel and Google Sheets
                       </span>{' '}
                       so you can keep planning where you already work.
                     </p>
-                    <p className="text-black text-lg">
+                    <p className="text-black text-md sm:text-lg">
                       No need to switch tools or learn a new formula language.
                       Everything stays familiar, just more reliable.
                     </p>
@@ -277,11 +293,11 @@ export default function LandingPage() {
                     Save plans directly to your data warehouse
                   </h2>
                   <div className="space-y-3">
-                    <p className="text-black text-lg">
+                    <p className="text-black text-md sm:text-lg">
                       Most planning tools create yet{' '}
                       <span className="font-bold">another data silo</span>.
                     </p>
-                    <p className="text-black text-lg">
+                    <p className="text-black text-md sm:text-lg">
                       PlanningDB supports two-way syncing with your cloud data
                       warehouse so you can model in spreadsheets and{' '}
                       <span className="font-bold">
@@ -289,7 +305,7 @@ export default function LandingPage() {
                       </span>
                       .
                     </p>
-                    <p className="text-black text-lg">
+                    <p className="text-black text-md sm:text-lg">
                       No extra exports. No extra steps.
                     </p>
                   </div>
@@ -387,11 +403,11 @@ export default function LandingPage() {
         <section className="flex justify-center w-full py-12 md:py-20">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-              <div className="space-y-2">
+              <div className="space-y-4">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tighter">
                   PlanningDB adds what spreadsheets lack
                 </h2>
-                <p className="max-w-[900px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 text-gray-800">
+                <p className="max-w-[900px] md:text-xl text-black">
                   Get the flexibility of spreadsheets with the structure of a
                   database.
                 </p>
@@ -482,7 +498,7 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6">
             <div className="bg-brand rounded-2xl px-6 py-12 md:px-12 md:py-16">
               <div className="flex flex-col items-center justify-center text-center space-y-10">
-                <div className="space-y-2">
+                <div className="space-y-4">
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                     Designed for the realities of modern planning
                   </h2>
