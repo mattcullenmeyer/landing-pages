@@ -75,6 +75,53 @@ resource "aws_s3_bucket_policy" "main" {
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_identity
 resource "aws_cloudfront_origin_access_identity" "main" {}
 
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_response_headers_policy
+resource "aws_cloudfront_response_headers_policy" "main" {
+  name = "${var.name}-response-headers-policy"
+
+  security_headers_config {
+    content_security_policy {
+      override                = true
+      content_security_policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google.com; font-src 'self'; connect-src 'self' https://www.google.com https://www.googletagmanager.com https://googleads.g.doubleclick.net; frame-src 'self' https://www.googletagmanager.com https://*.doubleclick.net; object-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';"
+    }
+
+    content_type_options {
+      override = true
+    }
+
+    frame_options {
+      frame_option = "SAMEORIGIN"
+      override     = true
+    }
+
+    referrer_policy {
+      referrer_policy = "strict-origin-when-cross-origin"
+      override        = true
+    }
+
+    strict_transport_security {
+      access_control_max_age_sec = 31536000
+      include_subdomains         = true
+      preload                    = true
+      override                   = true
+    }
+
+    xss_protection {
+      protection = true
+      mode_block = true
+      override   = true
+    }
+  }
+
+  custom_headers_config {
+    items {
+      header   = "Permissions-Policy"
+      override = true
+      value    = "geolocation=(), microphone=(), camera=()"
+    }
+  }
+}
+
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution
 resource "aws_cloudfront_distribution" "main" {
   origin {
@@ -91,12 +138,13 @@ resource "aws_cloudfront_distribution" "main" {
   aliases             = [var.domain_name]
 
   default_cache_behavior {
-    allowed_methods        = ["GET", "HEAD"]
-    cached_methods         = ["GET", "HEAD"]
-    target_origin_id       = aws_s3_bucket.main.id
-    cache_policy_id        = local.managed_caching_optimized_id
-    viewer_protocol_policy = "redirect-to-https"
-    compress               = true
+    allowed_methods            = ["GET", "HEAD"]
+    cached_methods             = ["GET", "HEAD"]
+    target_origin_id           = aws_s3_bucket.main.id
+    cache_policy_id            = local.managed_caching_optimized_id
+    viewer_protocol_policy     = "redirect-to-https"
+    compress                   = true
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.main.id
   }
 
   price_class = "PriceClass_All"
@@ -130,9 +178,9 @@ resource "aws_cloudfront_distribution" "main" {
 
 resource "aws_route53_record" "route53_cloudfront_record" {
   allow_overwrite = false
-  zone_id = data.aws_route53_zone.main.zone_id
-  name    = var.domain_name
-  type    = "A"
+  zone_id         = data.aws_route53_zone.main.zone_id
+  name            = var.domain_name
+  type            = "A"
 
   alias {
     name                   = aws_cloudfront_distribution.main.domain_name
