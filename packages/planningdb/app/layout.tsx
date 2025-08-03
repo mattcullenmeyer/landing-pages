@@ -7,6 +7,10 @@ import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'PlanningDB',
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -18,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="theme-color" content="#F9F7F0" />
+        <link rel="canonical" href="https://planningdb.com" />
         <style>{`
           html {
             font-family: ${GeistSans.style.fontFamily};
