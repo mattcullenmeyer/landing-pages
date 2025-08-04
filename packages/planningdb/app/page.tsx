@@ -430,8 +430,7 @@ export default function LandingPage() {
                   </div>
                   <div className="space-y-4 pt-4 border-t mt-4 border-gray-400">
                     <blockquote className="font-medium leading-relaxed text-sm">
-                      {`"Every department does their own thing so spreadsheets
-                      proliferate and @#$%!& becomes just a repository."`}
+                      {`"Every department does their own thing so spreadsheets proliferate."`}
                     </blockquote>
                     <p className="text-sm text-black">
                       — Senior Manager, FP&A Systems
@@ -456,8 +455,7 @@ export default function LandingPage() {
                   </div>
                   <div className="space-y-4 pt-4 border-t mt-4 border-gray-400">
                     <blockquote className="font-medium leading-relaxed text-sm">
-                      {`"Planning tools like @#$%!& are basically for version
-                      control."`}
+                      {`"Planning tools are basically for version control."`}
                     </blockquote>
                     <p className="text-sm text-black">
                       — Senior Finance Manager
@@ -482,8 +480,7 @@ export default function LandingPage() {
                   </div>
                   <div className="space-y-4 pt-4 border-t mt-4 border-gray-400">
                     <blockquote className="font-medium leading-relaxed text-sm">
-                      {`"Getting access controls exactly right is tricky in
-                      @#$%!&."`}
+                      {`"Getting access controls exactly right is tricky."`}
                     </blockquote>
                     <p className="text-sm text-black">— VP of Finance</p>
                   </div>
