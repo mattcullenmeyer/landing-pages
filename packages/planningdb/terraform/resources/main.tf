@@ -82,7 +82,7 @@ resource "aws_cloudfront_response_headers_policy" "main" {
   security_headers_config {
     content_security_policy {
       override                = true
-      content_security_policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google.com; font-src 'self'; connect-src 'self' https://www.google.com https://www.googletagmanager.com https://googleads.g.doubleclick.net; frame-src 'self' https://www.googletagmanager.com https://*.doubleclick.net; object-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';"
+      content_security_policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net; font-src 'self'; connect-src 'self' https://www.google.com https://google.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://api.airtable.com; frame-src 'self' https://www.googletagmanager.com https://*.doubleclick.net; object-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';"
     }
 
     content_type_options {

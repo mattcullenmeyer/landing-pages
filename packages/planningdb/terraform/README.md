@@ -34,3 +34,5 @@ You need to first create a hosted zone manually
 `terraform validate`  
 `terraform plan -out=tfplan`  
 `terraform apply tfplan`
+
+You may need to invalidate Cloudfront for certain changes to take effect
