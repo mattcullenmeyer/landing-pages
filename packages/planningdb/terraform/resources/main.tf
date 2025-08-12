@@ -7,6 +7,9 @@ locals {
 resource "aws_acm_certificate" "main" {
   domain_name       = var.domain_name
   validation_method = "DNS"
+  subject_alternative_names = [
+    "www.${var.domain_name}"
+  ]
 
   lifecycle {
     create_before_destroy = true
@@ -122,6 +125,35 @@ resource "aws_cloudfront_response_headers_policy" "main" {
   }
 }
 
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_function
+resource "aws_cloudfront_function" "main" {
+  name    = "redirect_www_to_root"
+  runtime = "cloudfront-js-2.0"
+
+  code = <<EOF
+function handler(event) {
+  var request = event.request;
+  var headers = request.headers;
+
+  if (headers.host && headers.host.value.startsWith("www.")) {
+    // Remove the "www." prefix from the host
+    var host = headers.host.value.substring(4);
+    var redirectUrl = "https://" + host + request.uri;
+    return {
+      statusCode: 301,
+      statusDescription: 'Moved Permanently',
+      headers: {
+        "location": { "value": redirectUrl }
+      }
+    };
+  }
+
+  return request;
+}
+EOF
+}
+
+
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution
 resource "aws_cloudfront_distribution" "main" {
   origin {
@@ -135,7 +167,10 @@ resource "aws_cloudfront_distribution" "main" {
 
   enabled             = true
   default_root_object = "index.html"
-  aliases             = [var.domain_name]
+  aliases = [
+    var.domain_name,
+    "www.${var.domain_name}"
+  ]
 
   default_cache_behavior {
     allowed_methods            = ["GET", "HEAD"]
@@ -145,6 +180,12 @@ resource "aws_cloudfront_distribution" "main" {
     viewer_protocol_policy     = "redirect-to-https"
     compress                   = true
     response_headers_policy_id = aws_cloudfront_response_headers_policy.main.id
+
+    # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution#function-association
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.main.arn
+    }
   }
 
   price_class = "PriceClass_All"
@@ -188,3 +229,17 @@ resource "aws_route53_record" "route53_cloudfront_record" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "route53_cloudfront_record_www" {
+  allow_overwrite = false
+  zone_id         = data.aws_route53_zone.main.zone_id
+  name            = "www.${var.domain_name}"
+  type            = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.main.domain_name
+    zone_id                = aws_cloudfront_distribution.main.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
