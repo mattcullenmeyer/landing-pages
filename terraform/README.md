@@ -7,7 +7,7 @@ You need to first create a hosted zone manually
 ### AWS Console
 
 - Route 53 >> Create hosted zone
-- Domain name: planningdb.com
+- Domain name: eg, planningdb.com
 - Type: Public hosted zone
 - Create hosted zone
 
@@ -15,6 +15,7 @@ You need to first create a hosted zone manually
 
 - Domain list >> select domain
 - Nameservers >> Custom DNS >> add 4 namservers (NS) records from AWS Route 53 hosted zone
+- There's a tiny green checkmark in the Nameservers section you'll need to click to save
 
 ## Helpful commands
 
@@ -28,7 +29,6 @@ You need to first create a hosted zone manually
 `aws configure list --profile {profile_name}` # print configuration info of name profile  
 `aws configure --profile {profile_name}` # configure a new profile
 
-`cd terraform/deploy`  
 `terraform init`  
 `terraform fmt`  
 `terraform validate`  

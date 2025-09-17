@@ -1,65 +1,73 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { useToast } from "@/hooks/use-toast"
-import { cn } from "@/lib/utils"
-import { Loader2 } from 'lucide-react'
+import * as React from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
+import { Loader2 } from 'lucide-react';
 
-export default function WaitlistForm({
-  cta = "Join waitlist",
-  ariaLabel = "Join waitlist",
-  className,
-}: {
-  cta?: string
-  ariaLabel?: string
-  className?: string
-}) {
-  const { toast } = useToast()
-  const [email, setEmail] = React.useState("")
-  const [isLoading, setIsLoading] = React.useState(false)
+const AIRTABLE_BASE_ID = process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID!;
+const AIRTABLE_TABLE_ID = process.env.NEXT_PUBLIC_AIRTABLE_TABLE_ID!;
+const AIRTABLE_TOKEN = process.env.NEXT_PUBLIC_AIRTABLE_TOKEN!;
+
+const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`;
+
+export default function WaitlistForm() {
+  const { toast } = useToast();
+  const [email, setEmail] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+    e.preventDefault();
     if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
       toast({
-        title: "Please enter a valid email",
-        description: "Example: alex@example.com",
-        variant: "destructive",
-      })
-      return
+        title: 'Please enter a valid email',
+        description: 'Example: alex@example.com',
+        variant: 'destructive',
+      });
+      return;
     }
-    setIsLoading(true)
+    setIsLoading(true);
+
     try {
-      const res = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      })
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok) {
-        throw new Error(data?.error || "Something went wrong")
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${AIRTABLE_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          records: [
+            {
+              fields: {
+                Email: email,
+                'Created at': new Date().toISOString().split('T')[0],
+                Page: 'Escapehatch',
+              },
+            },
+          ],
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Something went wrong');
       }
+
       toast({
-        title: "You’re on the list!",
-        description: "We’ll email you as soon as invites go out.",
-      })
-      setEmail("")
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Failed to join waitlist"
-      toast({
-        title: "Could not join waitlist",
-        description: message,
-        variant: "destructive",
-      })
+        title: 'Success!',
+        description: 'You have successfully joined the waitlist',
+        duration: 5000,
+      });
+      setEmail('');
+    } catch (error: unknown) {
+      console.error('Error submitting form:', error);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }
 
   return (
-    <form onSubmit={onSubmit} className={cn("flex gap-2", className)} aria-label={ariaLabel}>
+    <form onSubmit={onSubmit} className="flex gap-2" aria-label="Join waitlist">
       <div className="sr-only" id="waitlist-label">
         Join waitlist form
       </div>
@@ -85,9 +93,9 @@ export default function WaitlistForm({
             Joining…
           </span>
         ) : (
-          cta
+          'Join waitlist'
         )}
       </Button>
     </form>
-  )
+  );
 }

@@ -12,7 +12,6 @@ import {
   Activity,
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
 import WaitlistForm from '@/components/waitlist-form';
 
 export default function Page() {
@@ -38,18 +37,24 @@ function Header() {
         <Link href="#" className="flex items-center gap-2 font-semibold">
           <Zap className="h-5 w-5 text-emerald-500" aria-hidden="true" />
           <span className="sr-only">Escapehatch</span>
-          <span className="hidden sm:inline">Escapehatch</span>
+          <span>Escapehatch</span>
         </Link>
         <nav className="flex items-center gap-4 text-sm">
-          <Link href="#why" className="hover:underline underline-offset-4">
+          <Link
+            href="#why"
+            className="hover:underline underline-offset-4 hidden sm:inline"
+          >
             Why Escapehatch
           </Link>
-          <Link href="#benefits" className="hover:underline underline-offset-4">
+          <Link
+            href="#benefits"
+            className="hover:underline underline-offset-4 hidden sm:inline"
+          >
             What you get
           </Link>
           <Link
             href="#how-it-works"
-            className="hover:underline underline-offset-4"
+            className="hover:underline underline-offset-4 hidden sm:inline"
           >
             How it works
           </Link>
@@ -73,7 +78,7 @@ function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-emerald-50/60 via-transparent to-transparent" />
       <div className="container mx-auto grid items-center gap-8 px-4 py-12 md:grid-cols-2 md:py-20">
         <div className="space-y-6">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl text-center md:text-left">
             Make Google Sheets fast, no matter how big your model gets
           </h1>
           <p className="text-lg text-gray-700">
@@ -82,9 +87,9 @@ function Hero() {
             and complex formulas.
           </p>
           <div className="max-w-md">
-            <WaitlistForm cta="Join waitlist" ariaLabel="Join waitlist" />
+            <WaitlistForm />
             <p className="mt-2 text-xs text-gray-700">
-              No spam. We&apos;ll notify you when your invite is ready.
+              No spam. Connect with the founder. Get early access.
             </p>
           </div>
         </div>
@@ -101,21 +106,22 @@ function Problem() {
     <section id="why" className="border-b bg-muted/30">
       <div className="container mx-auto grid items-center gap-10 px-4 py-16 md:grid-cols-2">
         <div className="space-y-3">
-          <div className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-xs font-medium">
-            <Shield
-              className="h-3.5 w-3.5 text-emerald-600"
-              aria-hidden="true"
-            />
-            Why Escapehatch
+          <div className="text-center md:text-left">
+            <div className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-xs font-medium">
+              <Shield
+                className="h-3.5 w-3.5 text-emerald-600"
+                aria-hidden="true"
+              />
+              Why Escapehatch
+            </div>
           </div>
-          <h2 className="text-3xl font-bold tracking-tight">
+          <h2 className="text-3xl font-bold tracking-tight text-center md:text-left">
             Spreadsheets shouldn&apos;t grind to a halt
           </h2>
           <div className="space-y-4 text-gray-700">
             <p>
-              {`If you've ever watched a progress bar crawl across your Google
-              Sheet, you know the pain. Large datasets and complex formulas can
-              turn even simple edits into multi-second delays.`}
+              Large datasets and complex formulas can turn simple edits into
+              multi-second delays.
             </p>
             <p>
               Escapehatch removes the bottlenecks so you can keep working at
@@ -220,8 +226,8 @@ function HowItWorks() {
             Under the hood, without the overhead
           </h2>
           <p className="mx-auto max-w-2xl text-gray-700">
-            A lightweight extension coordinates with a powerful cloud
-            calculator—so your Sheets stay snappy.
+            Our browser extension connects your Workbook to our powerful cloud
+            calculator so your Sheets stay snappy.
           </p>
         </div>
 
@@ -290,15 +296,11 @@ function FinalCTA() {
             Turn your slow sheets into high-performance tools
           </h2>
           <p className="max-w-2xl text-gray-700">
-            Join the waitlist to get early access and help shape the future of
-            fast spreadsheets.
+            Join the waitlist to connect with the founder and get early access.
           </p>
         </div>
         <div className="max-w-md md:justify-self-end">
-          <WaitlistForm
-            cta="Join waitlist"
-            ariaLabel="Join waitlist from final CTA"
-          />
+          <WaitlistForm />
           <p className="mt-2 text-xs text-gray-700">
             We&apos;ll only use your email to send updates about Escapehatch.
           </p>
@@ -312,10 +314,32 @@ function Footer() {
   return (
     <footer className="border-t">
       <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-8 text-sm text-gray-700 sm:flex-row">
-        <p>
-          &copy; {new Date().getFullYear()} Escapehatch. All rights reserved.
-        </p>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-2">
+          <p>&copy; {new Date().getFullYear()} Escapehatch</p>
+          {/* . All rights reserved. */}
+          <span className="hidden sm:inline">|</span>
+          <Link href="/privacy" className="hover:underline underline-offset-4">
+            Privacy
+          </Link>
+          <span className="hidden sm:inline">|</span>
+          <Link href="/terms" className="hover:underline underline-offset-4">
+            Terms
+          </Link>
+        </div>
+        <div className="flex items-center gap-2">
+          <a
+            href="mailto:hello@escapehatch.tech"
+            className="hover:underline underline-offset-4"
+          >
+            hello@escapehatch.tech
+          </a>
+          <span className="hidden sm:inline">|</span>
+          <a
+            href="tel:720-237-6128"
+            className="hover:underline underline-offset-4"
+          >
+            720-237-6128
+          </a>
           {/* <Link href="#" className="hover:underline underline-offset-4">
             Privacy
           </Link>

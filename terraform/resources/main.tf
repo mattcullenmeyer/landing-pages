@@ -127,7 +127,7 @@ resource "aws_cloudfront_response_headers_policy" "main" {
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_function
 resource "aws_cloudfront_function" "main" {
-  name    = "redirect_www_to_root"
+  name    = "${var.name}-redirect_www_to_root"
   runtime = "cloudfront-js-2.0"
 
   code = <<EOF
