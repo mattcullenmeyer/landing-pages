@@ -127,14 +127,16 @@ resource "aws_cloudfront_response_headers_policy" "main" {
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_function
 resource "aws_cloudfront_function" "main" {
-  name    = "${var.name}-redirect_www_to_root"
+  name    = "${var.name}-redirect_www_to_root" // TODO: rename this
   runtime = "cloudfront-js-2.0"
 
   code = <<EOF
 function handler(event) {
   var request = event.request;
   var headers = request.headers;
+  var uri = request.uri;
 
+  // --- Rule 1: Redirect "www." to bare domain ---
   if (headers.host && headers.host.value.startsWith("www.")) {
     // Remove the "www." prefix from the host
     var host = headers.host.value.substring(4);
@@ -146,6 +148,12 @@ function handler(event) {
         "location": { "value": redirectUrl }
       }
     };
+  }
+
+  // --- Rule 2: Rewrite extensionless URIs to .html ---
+  // Example: "/privacy" -> "/privacy.html"
+  if (!uri.includes('.') && !uri.endsWith('/')) {
+    request.uri = uri + ".html";
   }
 
   return request;

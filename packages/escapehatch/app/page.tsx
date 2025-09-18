@@ -16,59 +16,13 @@ import WaitlistForm from '@/components/waitlist-form';
 
 export default function Page() {
   return (
-    <div className="flex min-h-[100dvh] flex-col">
-      <Header />
-      <main className="flex-1">
-        <Hero />
-        <Problem />
-        <Benefits />
-        <HowItWorks />
-        <FinalCTA />
-      </main>
-      <Footer />
-    </div>
-  );
-}
-
-function Header() {
-  return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur">
-      <div className="container mx-auto flex h-14 items-center justify-between px-4">
-        <Link href="#" className="flex items-center gap-2 font-semibold">
-          <Zap className="h-5 w-5 text-emerald-500" aria-hidden="true" />
-          <span className="sr-only">Escapehatch</span>
-          <span>Escapehatch</span>
-        </Link>
-        <nav className="flex items-center gap-4 text-sm">
-          <Link
-            href="#why"
-            className="hover:underline underline-offset-4 hidden sm:inline"
-          >
-            Why Escapehatch
-          </Link>
-          <Link
-            href="#benefits"
-            className="hover:underline underline-offset-4 hidden sm:inline"
-          >
-            What you get
-          </Link>
-          <Link
-            href="#how-it-works"
-            className="hover:underline underline-offset-4 hidden sm:inline"
-          >
-            How it works
-          </Link>
-          {/* <Link
-            href="#join"
-            className={cn(
-              'inline-flex items-center gap-1 rounded-md px-2 py-1 text-emerald-600 hover:text-emerald-700'
-            )}
-          >
-            Join waitlist <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link> */}
-        </nav>
-      </div>
-    </header>
+    <>
+      <Hero />
+      <Problem />
+      <Benefits />
+      <HowItWorks />
+      <FinalCTA />
+    </>
   );
 }
 
@@ -307,48 +261,6 @@ function FinalCTA() {
         </div>
       </div>
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="border-t">
-      <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-8 text-sm text-gray-700 sm:flex-row">
-        <div className="flex items-center gap-2">
-          <p>&copy; {new Date().getFullYear()} Escapehatch</p>
-          {/* . All rights reserved. */}
-          <span className="hidden sm:inline">|</span>
-          <Link href="/privacy" className="hover:underline underline-offset-4">
-            Privacy
-          </Link>
-          <span className="hidden sm:inline">|</span>
-          <Link href="/terms" className="hover:underline underline-offset-4">
-            Terms
-          </Link>
-        </div>
-        <div className="flex items-center gap-2">
-          <a
-            href="mailto:hello@escapehatch.tech"
-            className="hover:underline underline-offset-4"
-          >
-            hello@escapehatch.tech
-          </a>
-          <span className="hidden sm:inline">|</span>
-          <a
-            href="tel:720-237-6128"
-            className="hover:underline underline-offset-4"
-          >
-            720-237-6128
-          </a>
-          {/* <Link href="#" className="hover:underline underline-offset-4">
-            Privacy
-          </Link>
-          <Link href="#" className="hover:underline underline-offset-4">
-            Terms
-          </Link> */}
-        </div>
-      </div>
-    </footer>
   );
 }
 

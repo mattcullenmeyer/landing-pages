@@ -3,6 +3,8 @@ import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import { LayoutHeader } from './_components/layout-header';
+import { LayoutFooter } from './_components/layout-footer';
 
 export const metadata: Metadata = {
   title: 'Escapehatch',
@@ -35,7 +37,11 @@ html {
         `}</style>
       </head>
       <body>
-        {children}
+        <div className="flex min-h-[100dvh] flex-col">
+          <LayoutHeader />
+          <main className="flex-1">{children}</main>
+        </div>
+        <LayoutFooter />
         <Toaster />
       </body>
     </html>
