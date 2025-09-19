@@ -31,10 +31,12 @@ export default function RootLayout({
           }
         `}</style>
         <Script
+          id="google-tag"
+          strategy="afterInteractive"
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-17421563344"
         ></Script>
-        <Script id="google-tag" strategy="afterInteractive">
+        <Script id="google-tag-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

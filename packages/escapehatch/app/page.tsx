@@ -35,10 +35,10 @@ function Hero() {
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl text-center md:text-left">
             Make Google Sheets fast, no matter how big your model gets
           </h1>
-          <p className="text-lg text-gray-700">
-            Escapehatch offloads formula calculations to the cloud so your
-            spreadsheets stay fast and responsive, even with massive datasets
-            and complex formulas.
+          <p className="md:text-lg text-gray-700">
+            Offload formula calculations to the cloud so your spreadsheets stay
+            fast and responsive, even with massive datasets and complex
+            formulas.
           </p>
           <div className="max-w-md">
             <WaitlistForm />
@@ -47,7 +47,7 @@ function Hero() {
             </p>
           </div>
         </div>
-        <div className="relative">
+        <div className="relative  hidden md:block">
           <VisualSheet />
         </div>
       </div>
@@ -75,11 +75,8 @@ function Problem() {
           <div className="space-y-4 text-gray-700">
             <p>
               Large datasets and complex formulas can turn simple edits into
-              multi-second delays.
-            </p>
-            <p>
-              Escapehatch removes the bottlenecks so you can keep working at
-              full speed.
+              long delays. Escapehatch removes the bottlenecks so you can keep
+              working at full speed.
             </p>
           </div>
         </div>
@@ -181,7 +178,7 @@ function HowItWorks() {
           </h2>
           <p className="mx-auto max-w-2xl text-gray-700">
             Our browser extension connects your Workbook to our powerful cloud
-            calculator so your Sheets stay snappy.
+            calculator so your sheets stay snappy.
           </p>
         </div>
 
@@ -200,7 +197,7 @@ function HowItWorks() {
               <Shield className="h-6 w-6 text-emerald-600" aria-hidden="true" />
             }
             title="Detect & Offload"
-            body="When you make an edit, Escapehatch instantly detects the change and notifies our cloud service."
+            body="Our browser extension instantly detects edits and notifies our cloud service."
           />
           <Step
             index={3}
@@ -208,7 +205,7 @@ function HowItWorks() {
               <Zap className="h-6 w-6 text-emerald-600" aria-hidden="true" />
             }
             title="Lightning-Fast Recalculation"
-            body="Our powerful calculation engine crunches the numbers and updates your sheet, often in milliseconds."
+            body="Our powerful calculation engine crunches the numbers and updates your sheet."
           />
         </div>
       </div>
